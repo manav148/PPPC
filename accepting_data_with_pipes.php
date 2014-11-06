@@ -12,6 +12,7 @@ function create_named_pipe($named_pipe_path, $delete_existing = False){
     // Create pipe with permissions
     $success = posix_mkfifo($named_pipe_path, 0766);
     if(!$success)
+        throw Exception("Unable to create named pipe $named_pipe_path");
     return $named_pipe_path;
 }
 
