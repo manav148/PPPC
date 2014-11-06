@@ -1,6 +1,6 @@
 <?php
 
-function write_named_pipe($named_pipe_path, $serialized_data){
+function write_to_named_pipe($named_pipe_path, $serialized_data){
     $pipe_write = fopen($named_pipe_path, 'w');
     if(!$pipe_write)
         throw Exception("Unable to write from pipe $named_pipe_path");
@@ -19,4 +19,4 @@ $pid = exec($cmd);
 $named_pipe_path = "/var/tmp/".$pid.".pipe";
 $arguments_to_send["argument1"] = "argument1";
 $arguments_to_send["argument2"] = "argument2";
-write_named_pipe($named_pipe_path, serialize($arguments_to_send));
+write_to_named_pipe($named_pipe_path, serialize($arguments_to_send));

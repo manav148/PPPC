@@ -15,7 +15,7 @@ function create_named_pipe($named_pipe_path, $delete_existing = False){
     return $named_pipe_path;
 }
 
-function read_named_pipe($named_pipe_path){
+function read_from_named_pipe($named_pipe_path){
     $pipe_read = fopen($named_pipe_path, 'r');
     if(!$pipe_read)
         throw Exception("Unable to read from pipe $named_pipe_path");
@@ -33,7 +33,7 @@ try {
     // Create named pipe to get data
     create_named_pipe($named_pipe_path);
     // Get data from named pipe
-    $data = unserialize(trim(read_named_pipe($named_pipe_path)));
+    $data = unserialize(trim(read_from_named_pipe($named_pipe_path)));
     
     process_data($data);
 } catch (Exception $e) {
