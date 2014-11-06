@@ -1,7 +1,9 @@
 PPPC
 ====
 
-PPPC (Php Piped Process Communications)
+PPPC (PHP Piped Process Communications)
 
-Need to spawn a new independent Php processes and pass arguments to it? Command line is too risky.
-Use the above code files are boiler plate to spawn new processes and pass data.
+Need to spawn a new independent PHP process and pass arguments to it? Command line is too risky.
+< Don't do exec("nohup php program.php arg1 arg2 &")>
+
+Try using the above code files as boiler plate to spawn a new independent process and pass data.
