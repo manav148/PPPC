@@ -7,4 +7,4 @@ Need to spawn a new independent PHP process and pass arguments to it? Command li
 
 ```exec("nohup php program.php arg1 arg2 &")``` (Too Risky!!)
 
-Try using the above code files as boiler plate to spawn a new independent process and pass data.
+Try using the above code files as boiler plate to spawn a new independent process and pass data using pipes.
