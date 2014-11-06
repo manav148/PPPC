@@ -28,18 +28,24 @@ function read_from_named_pipe($named_pipe_path){
 
 function process_data($data){
     // Enter logic to process data here
+    $arg1 = $data["argument1"];
+    $arg2 = $data["argument2"];
 }
 
-try {
-    // Create named pipe to get data
-    create_named_pipe($named_pipe_path);
-    // Get data from named pipe
-    $data = unserialize(trim(read_from_named_pipe($named_pipe_path)));
-    
-    process_data($data);
-} catch (Exception $e) {
-   
-} finally{
-    // Delete pipe 
-    unlink($named_pipe_path);
+function main(){
+    try {
+        // Create named pipe to get data
+        create_named_pipe($named_pipe_path);
+        // Get data from named pipe
+        $data = unserialize(trim(read_from_named_pipe($named_pipe_path)));
+        
+        process_data($data);
+    } catch (Exception $e) {
+       
+    } finally{
+        // Delete pipe 
+        unlink($named_pipe_path);
+    }
 }
+
+main();

@@ -11,12 +11,16 @@ function write_to_named_pipe($named_pipe_path, $serialized_data){
 }   
 
 
-$program_to_execute = "dummy.php";
-$arguments_to_send = array();
-// Run publishing in the background
-$cmd = "nohup php $program_to_execute > /dev/null 2>&1 & echo $!";
-$pid = exec($cmd);
-$named_pipe_path = "/var/tmp/".$pid.".pipe";
-$arguments_to_send["argument1"] = "argument1";
-$arguments_to_send["argument2"] = "argument2";
-write_to_named_pipe($named_pipe_path, serialize($arguments_to_send));
+function main(){
+    $program_to_execute = "dummy.php";
+    $arguments_to_send = array();
+    // Run publishing in the background
+    $cmd = "nohup php $program_to_execute > /dev/null 2>&1 & echo $!";
+    $pid = exec($cmd);
+    $named_pipe_path = "/var/tmp/".$pid.".pipe";
+    $arguments_to_send["argument1"] = "argument1";
+    $arguments_to_send["argument2"] = "argument2";
+    write_to_named_pipe($named_pipe_path, serialize($arguments_to_send));
+}
+
+main();
